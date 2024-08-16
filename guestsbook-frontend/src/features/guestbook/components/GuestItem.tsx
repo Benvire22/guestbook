@@ -20,6 +20,7 @@ const GuestItem: React.FC<Props> = ({author, message, image}) => {
         display: 'flex',
         flexDirection: 'column',
         p: 1,
+        mb: 2
       }}>
         <CardHeader title={author} sx={{width: '100%', borderBottom: '2px solid #ededed'}} />
         <CardContent sx={{display: 'flex', gap: 3, alignItems: 'center', justifyContent: 'space-between'}}>

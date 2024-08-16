@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, TextField } from '@mui/material';
 import { GuestMutation } from '../../../types';
-import SaveIcon from '@mui/icons-material/Save';
+import SendIcon from '@mui/icons-material/Send';
 import { LoadingButton } from '@mui/lab';
 import FileInput from '../../../UI/FileInput/FileInput';
 
@@ -32,7 +32,7 @@ const GuestForm: React.FC<Props> = ({onSubmit, isLoading}) => {
     const {name, value} = e.target;
     setState(prevState => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -47,7 +47,7 @@ const GuestForm: React.FC<Props> = ({onSubmit, isLoading}) => {
   };
 
   return (
-    <Grid container  direction="column" spacing={2} component="form" onSubmit={submitFormHandler}>
+    <Grid container direction="column" spacing={2} component="form" onSubmit={submitFormHandler}>
       <Grid item>
         <TextField
           label="Author"
@@ -81,7 +81,8 @@ const GuestForm: React.FC<Props> = ({onSubmit, isLoading}) => {
           type="submit"
           loading={isLoading}
           loadingPosition="start"
-          startIcon={<SaveIcon/>}
+          sx={{p: '8px 20px', fontSize: '24px'}}
+          startIcon={<SendIcon/>}
           variant="contained"
         >
           <span>Send</span>

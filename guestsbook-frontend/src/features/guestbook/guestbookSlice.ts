@@ -7,7 +7,6 @@ export interface GuestbookState {
   fetchLoading: boolean;
   errorFetching: boolean;
   createLoading: boolean;
-  errorCreating: boolean;
 }
 
 export const initialState: GuestbookState = {
@@ -15,7 +14,6 @@ export const initialState: GuestbookState = {
   fetchLoading: false,
   errorFetching: false,
   createLoading: false,
-  errorCreating: false,
 };
 
 const guestbookSlice = createSlice({
@@ -36,21 +34,17 @@ const guestbookSlice = createSlice({
 
     builder.addCase(createGuest.pending, (state) => {
       state.createLoading = true;
-      state.errorCreating = false;
     }).addCase(createGuest.fulfilled, (state) => {
       state.createLoading = false;
     }).addCase(createGuest.rejected, (state) => {
       state.createLoading = false;
-      state.errorCreating = true;
     });
-
   },
   selectors: {
     selectGuests: (state) => state.guestsData,
     selectFetchLoading: (state) => state.fetchLoading,
     selectErrorFetching: (state) => state.errorFetching,
     selectCreateLoading: (state) => state.createLoading,
-    selectErrorCreating: (state) => state.errorCreating,
   },
 });
 
@@ -61,5 +55,4 @@ export const {
   selectFetchLoading,
   selectErrorFetching,
   selectCreateLoading,
-  selectErrorCreating,
 } = guestbookSlice.selectors;

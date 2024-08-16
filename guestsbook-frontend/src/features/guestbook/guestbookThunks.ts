@@ -5,7 +5,12 @@ import axiosApi from '../../axiosApi';
 export const fetchGuests = createAsyncThunk<Guest[]>(
   'guestbook/fetchGuests',
   async () => {
-    const {data: guests } = await axiosApi.get<Guest[]>('/guests');
+    const {data: guests} = await axiosApi.get<Guest[] | null>('/guests');
+
+    if (!guests) {
+      return [];
+    }
+
     return guests;
   },
 );
