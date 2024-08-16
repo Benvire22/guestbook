@@ -1,5 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Grid, TextField } from '@mui/material';
+import { selectCreateLoading } from '../../features/guestbook/guestbookSlice';
+import { useAppSelector } from '../../app/hooks';
 
 interface Props {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -10,6 +12,13 @@ interface Props {
 const FileInput: React.FC<Props> = ({onChange, name, label}) => {
   const [fileName, setFileName] = useState('');
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const createLoading = useAppSelector(selectCreateLoading);
+
+  useEffect(() => {
+    if (createLoading) {
+      setFileName('');
+    }
+  }, [createLoading]);
 
   const activateInput = () => {
     if (inputRef.current) {
@@ -34,7 +43,7 @@ const FileInput: React.FC<Props> = ({onChange, name, label}) => {
         name={name}
         style={{display: 'none'}}
         ref={inputRef}
-        onChange={onFileChange}
+        onInput={onFileChange}
       />
       <Grid container spacing={2} alignItems="center">
         <Grid item xs>

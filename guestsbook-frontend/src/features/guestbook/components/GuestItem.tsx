@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, Grid, CardMedia, Typography } from '@mui
 interface Props {
   author: string;
   message: string;
-  image: string | null
+  image: string | null;
 }
 
 const GuestItem: React.FC<Props> = ({author, message, image}) => {
@@ -15,14 +15,21 @@ const GuestItem: React.FC<Props> = ({author, message, image}) => {
   }
 
   return (
-    <Grid item sx={{width: '280px'}}>
-      <Card sx={{height: '100%'}}>
-        <CardHeader title={author} />
-        {image ? (
-          <CardMedia image={cardImage} title={author} sx={{height: 0, paddingTop: '56.25%'}} />
-        ) : null}
-        <CardContent>
-          <Typography variant="body1">{message}</Typography>
+    <Grid item>
+      <Card variant="outlined" sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        p: 1,
+      }}>
+        <CardHeader title={author} sx={{width: '100%', borderBottom: '2px solid #ededed'}} />
+        <CardContent sx={{display: 'flex', gap: 3, alignItems: 'center', justifyContent: 'space-between'}}>
+          <Typography variant="body1" width="90%">{message}</Typography>
+          {image ? (
+            <CardMedia
+              image={cardImage}
+              title={author}
+              sx={{height: '100px', width: '100px', borderRadius: '50%', border: '2px solid #e4eded'}} />
+          ) : null}
         </CardContent>
       </Card>
     </Grid>

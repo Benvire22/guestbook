@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { guestbookReducer } from '../features/guestbook/guestbookSlice';
 
 export const store = configureStore({
-  reducer: {}
+  reducer: {
+    guestbook: guestbookReducer,
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

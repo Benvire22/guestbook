@@ -47,7 +47,7 @@ const GuestForm: React.FC<Props> = ({onSubmit, isLoading}) => {
   };
 
   return (
-    <Grid container direction="column" spacing={2} component="form" onSubmit={submitFormHandler}>
+    <Grid container  direction="column" spacing={2} component="form" onSubmit={submitFormHandler}>
       <Grid item>
         <TextField
           label="Author"
@@ -84,7 +84,7 @@ const GuestForm: React.FC<Props> = ({onSubmit, isLoading}) => {
           startIcon={<SaveIcon/>}
           variant="contained"
         >
-          <span>Save</span>
+          <span>Send</span>
         </LoadingButton>
       </Grid>
     </Grid>
